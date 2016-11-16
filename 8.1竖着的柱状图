@@ -1,0 +1,111 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+void find_max(int a[],int& _max);
+
+void fill_arr(int a[],int& n);
+
+void star(int a[],int n);
+
+int main()
+{
+    int x,num_used=0;
+    int b[11]={0};
+
+    fill_arr(b,num_used);
+    find_max(b,x);
+    star(b,x);
+
+
+    return 0;
+}
+
+void find_max(int a[],int& _max)
+{
+    _max=a[0];
+
+    for (int i=1;i<11;i++)
+    {
+        if(a[i]>_max)
+            _max=a[i];
+    }
+
+}
+
+void fill_arr(int a[],int& n)
+{
+    int x;
+    cin>>x;
+    while (x!=-1)
+    {
+        if((x>=0)&&(x<=9))
+        {
+            a[0]++;
+        }
+        if((x>=10)&&(x<=19))
+        {
+            a[1]++;
+        }
+        if((x>=20)&&(x<=29))
+        {
+            a[2]++;
+        }
+        if((x>=30)&&(x<=39))
+        {
+            a[3]++;
+        }
+        if((x>=40)&&(x<=49))
+        {
+            a[4]++;
+
+        }
+        if((x>=50)&&(x<=59))
+        {
+            a[5]++;
+        }
+        if((x>=60)&&(x<=69))
+        {
+            a[6]++;
+        }
+        if((x>=70)&&(x<=79))
+        {
+            a[7]++;
+        }
+        if((x>=80)&&(x<=89))
+        {
+            a[8]++;
+        }
+        if((x>=90)&&(x<=99))
+        {
+            a[9]++;
+        }
+        if(x==100)
+        {
+            a[10]++;
+        }
+        n++;
+        cin>>x;
+    }
+}
+
+void star(int a[],int n)
+{
+    while (n>0)
+    {
+      for(int i=0;i<11;i++)
+    {
+        if(a[i]!=n)
+        {
+            cout<<"   ";
+        }
+        else
+        {
+            cout<<"*  ";
+            a[i]--;
+        }
+    }
+    n--;
+    cout<<endl;
+    }
+    cout<<"0 10 20 30 40 50 60 70 80 90 100";
+}
