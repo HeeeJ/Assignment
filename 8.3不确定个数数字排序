@@ -1,0 +1,43 @@
+#include <iostream>
+
+void bubblesort(int arr[], int length);
+//Precondition: length <= declared size of the array arr.
+//The array elements arr[0] through a[length - 1] have values.
+//Postcondition: The values of arr[0] through arr[length - 1] have
+//been rearranged so that arr[0] <= a[1] <= ... <= arr[length - 1].
+int main()
+{
+    using namespace std;
+    int len=0,next,Max=100;
+    int a[Max];
+    cin>>next;
+    for(int i=0; i<Max; i++)
+    {
+        if(next!=-1)
+        {
+            a[i]=next;
+            cin>>next;
+            len++;
+        }
+
+    }
+    bubblesort(a,len);
+    for(int j=0; j<len; j++)
+        cout<<a[j]<<" ";
+
+    return 0;
+}
+
+void bubblesort(int arr[], int length)
+{
+    // Bubble largest number toward the right
+    for (int i = length-1; i > 0; i--)
+        for (int j = 0; j < i; j++)
+            if (arr[j] > arr[j+1])
+            {
+                // Swap the numbers
+                int temp = arr[j+1];
+                arr[j+1] = arr[j];
+                arr[j] = temp;
+            }
+}
