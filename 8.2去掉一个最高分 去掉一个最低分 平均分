@@ -1,0 +1,53 @@
+#include<iostream>
+using namespace std;
+void find_max(double a[],double& _max,int caipan);
+void find_min(double a[],double& _min,int caipan);
+int main()
+{
+    int i;;
+    double total=0,ave,next,_max1,_min1;
+    int max_=100;
+    double a[max_];
+
+    cin>>i;
+
+    for (int b=0; b<i; b++)
+    {
+        cin>>next;
+        a[b]=next;
+        total+=a[b];
+    }
+    find_max(a,_max1,i);
+    find_min(a,_min1,i);
+
+    ave=(total-_max1-_min1)/(i-2);
+    cout.setf(ios::fixed);
+    cout.setf(ios::showpoint);
+    cout.precision(2);
+    cout<<ave;
+
+    return 0;
+}
+
+void find_max(double a[],double& _max,int caipan)
+{
+    _max=a[0];
+
+    for (int j=1;j<caipan;j++)
+    {
+        if(a[j]>_max)
+            _max=a[j];
+    }
+
+}
+
+void find_min(double a[],double& _min,int caipan)
+{
+    _min=a[0];
+
+    for(int j=1;j<caipan;j++)
+    {
+        if(a[j]<_min)
+            _min=a[j];
+    }
+}
