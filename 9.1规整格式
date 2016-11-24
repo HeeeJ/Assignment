@@ -1,0 +1,80 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+
+using namespace std;
+
+string make_lower(const string& s);
+//return a copy of s that has all uppercase characters changed to lowercase, other characters unchanged.
+string change_blank(const string& s);
+//change double blank into one blank.
+string change_first(const string& s);
+
+int main()
+{
+    string str1,str2;
+    int lenth;
+    do
+    {
+        do
+        {
+            lenth=0;
+            getline(cin,str1);
+            while(str1[lenth]!=0)
+                lenth++;
+            str2+=str1;
+        }
+        while(str1[lenth-1] !='.');
+    }
+
+    while(str1[lenth-2]!='.');
+
+
+    str2 = change_blank(str2);
+    str2 = make_lower(str2);
+    str2 = change_first(str2);
+
+    cout<<str2.substr(0,str2.length()-1);
+
+    return 0;
+}
+
+string make_lower(const string& s)
+{
+    string temp(s);
+    int size_count = s.length();
+    for (int i=0; i<size_count; i++)
+        temp[i] = tolower(s[i]);
+    return temp;
+}
+
+string change_blank(const string& s)
+{
+    string temp(s);
+    int size_count = s.length();
+    for (int i=0; i<size_count; i++)
+    {
+        while(temp[i]==' ')
+        {
+            if (temp[i+1]==' ')
+            {
+                temp.erase(i,1);
+            }
+            else
+                break;
+        }
+
+    }
+    return temp;
+}
+
+string change_first(const string& s)
+{
+    string temp(s);
+    int size_count = s.length();
+    for(int i=0; i<size_count-2; i++)
+        if (temp[i]=='.')
+        temp[i+2] = toupper(temp[i+2]);
+    temp[0] = toupper(temp[0]);
+    return temp;
+}
